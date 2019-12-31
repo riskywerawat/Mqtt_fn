@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <link rel="stylesheet" href="/assets/css/style.css"> -->
+    <title>ระบบควบคุมฟาร์มไก่</title>
+  </head>
+  <body>
+    <div class="container">
+     <form action="/login" method="POST">
+      <div class="login-form">
+        <h1>Login</h1>
+        <div class="textbox">
+          <input type="text" id="username" name="username" />
+          <span data-placeholder="username"></span>
+        </div>
+
+        <div class="textbox">
+          <input type="password" id="password" name="password" />
+          <span data-placeholder="password"></span>
+        </div>
+
+        <button type="submit" class="login_btn">
+          Login
+        </button>
+
+      </form>
+
+        <div class="bottom-text">
+          <a href="">Index</a>
+        </div>
+      </form>
+      </div>
+
+      <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+      <script type="text/javascript">
+        $(".textbox input").on("focus", function() {
+          $(this).addClass("focus");
+        });
+
+        $(".textbox input").on("blur", function() {
+          if ($(this).val() == "") $(this).removeClass("focus");
+        });
+
+        // function myFunction() {
+        //   if (
+        //     document.getElementById("username").value &&
+        //     document.getElementById("pwd").value
+        //   ) {
+        //     var username = document.getElementById("username").value;
+        //     var pwd = md5(document.getElementById("pwd").value);
+        //     //
+        //     axios({
+        //       method: "post",
+        //       url: "http://localhost:3000/login",
+        //       data: { username: username, password: pwd },
+        //       headers: { "content-type": "application/json" }
+        //     }).then(res => {
+        //       const status_login = res.data.status;
+        //       console.log(res);
+        //       if (status_login) {
+        //         const priority = res.data.priority;
+        //         const token = res.data.token;
+                
+        //         switch (priority) {
+        //           case 1:
+        //             sessionStorage.setItem("token", token);
+        //             sessionStorage.setItem("pri",priority);
+        //             window.location.href = "http://localhost:3000/index";
+        //             break;
+        //           default:
+        //             window.location.href = "http://localhost:3000/users";
+        //             sessionStorage.setItem("token", token);
+        //             sessionStorage.setItem("pri",priority);
+        //             break;
+        //         }
+        //       } else {
+        //         alert("username or password is wrong!");
+        //       }
+        //     });
+
+        //   } else {
+        //     $(".textbox input").on("focus", function() {
+        //       $(this).addClass("focus");
+        //     });
+        //     document.getElementById("username").focus();
+        //     document.getElementById("username").value = "";
+        //     document.getElementById("pwd").value = "";
+        //   } 
+        // }
+        // if(sessionStorage.getItem("pri") == 1 ){
+        //   window.location.href = "http://localhost:3000/index";
+        // }else if(sessionStorage.getItem("pri") == 2){
+        //   window.location.href = "http://localhost:3000/users";
+        // }
+        
+      </script>
+    
+  </div>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        font-family: "Montserrat", sans-serif;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        /* background-image: linear-gradient(100deg,#74b9ff,#dfe6e9); */
+        background-image: linear-gradient(100deg, #e5ebf1, #eaeaea);
+        background-color: #74b9ff;
+      }
+
+      .login-form {
+        width: 360px;
+        background: #f1f1f1;
+        height: 580px;
+        padding: 80px 40px;
+        border-radius: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .login-form h1 {
+        text-align: center;
+        margin-bottom: 60px;
+        font-weight: bolder;
+      }
+
+      .textbox {
+        border-bottom: 2px solid#adadad;
+        position: relative;
+        margin: 30px 0;
+      }
+
+      .textbox input {
+        font-size: 15px;
+        color: #333;
+        border: none;
+        width: 100%;
+        outline: none;
+        background: none;
+        padding: 0 5px;
+        height: 40px;
+      }
+      .textbox span::before {
+        content: attr(data-placeholder);
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        color: #adadad;
+        transform: translateY(-50%);
+        z-index: -1;
+        transition: 0.5s;
+      }
+      .textbox span::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0px;
+        width: 0%;
+        height: 2px;
+        background: linear-gradient(100deg, #74b9ff, #dfe6e9);
+        transition: 0.5s;
+      }
+
+      .focus + span::before {
+        top: -5px;
+      }
+      .focus + span::after {
+        width: 100%;
+      }
+
+      .login_btn {
+        display: block;
+        width: 100%;
+        height: 50px;
+        border: none;
+        background: linear-gradient(100deg, #74b9ff, #dfe6e9);
+        border-radius: 1px;
+        background-size: 200%;
+        color: #fff;
+        outline: none;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+      .login_btn:hover {
+        background-position: right;
+      }
+
+      .bottom-text {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 20px;
+      }
+    </style>
+  </body>
+</html>
