@@ -48,7 +48,7 @@
           <span data-placeholder="password"></span>
         </div>
 
-        <button type="submit" class="login_btn">
+        <button type="submit" class="login_btn" onclick="myFunction()">
           Login
         </button>
 
@@ -70,42 +70,42 @@
           if ($(this).val() == "") $(this).removeClass("focus");
         });
 
-        // function myFunction() {
-        //   if (
-        //     document.getElementById("username").value &&
-        //     document.getElementById("pwd").value
-        //   ) {
-        //     var username = document.getElementById("username").value;
-        //     var pwd = md5(document.getElementById("pwd").value);
-        //     //
-        //     axios({
-        //       method: "post",
-        //       url: "http://localhost:3000/login",
-        //       data: { username: username, password: pwd },
-        //       headers: { "content-type": "application/json" }
-        //     }).then(res => {
-        //       const status_login = res.data.status;
-        //       console.log(res);
-        //       if (status_login) {
-        //         const priority = res.data.priority;
-        //         const token = res.data.token;
+        function myFunction() {
+          if (
+            document.getElementById("username").value &&
+            document.getElementById("password").value
+          ) {
+            var username = document.getElementById("username").value;
+            var pwd = md5(document.getElementById("password").value);
+            //
+            axios({
+              method: "post",
+              url: "http://localhost:3000/gettoken",
+              data: { username: username, password: pwd },
+              headers: { "content-type": "application/json" }
+            }).then(res => {
+              const status_login = res.data.status;
+              console.log(res);
+              if (status_login) {
+                const priority = res.data.priority;
+                const token = res.data.token;
                 
-        //         switch (priority) {
-        //           case 1:
-        //             sessionStorage.setItem("token", token);
-        //             sessionStorage.setItem("pri",priority);
-        //             window.location.href = "http://localhost:3000/index";
-        //             break;
-        //           default:
-        //             window.location.href = "http://localhost:3000/users";
-        //             sessionStorage.setItem("token", token);
-        //             sessionStorage.setItem("pri",priority);
-        //             break;
-        //         }
-        //       } else {
-        //         alert("username or password is wrong!");
-        //       }
-        //     });
+                switch (priority) {
+                  case 1:
+                    sessionStorage.setItem("token", token);
+                    sessionStorage.setItem("pri",priority);
+                   
+                    break;
+                  default:
+                    sessionStorage.setItem("token", token);
+                    sessionStorage.setItem("pri",priority);
+                    break;
+                }
+              } else {
+                alert("username or password is wrong!");
+              }
+            });
+          
 
         //   } else {
         //     $(".textbox input").on("focus", function() {
@@ -121,6 +121,8 @@
         // }else if(sessionStorage.getItem("pri") == 2){
         //   window.location.href = "http://localhost:3000/users";
         // }
+          }
+        }
         
       </script>
     
