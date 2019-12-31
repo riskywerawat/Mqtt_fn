@@ -44,7 +44,7 @@
                 <strong style="font-size: 100px;"id="humidity"> 25</strong><span> humidity</span>
               </h2>
             </div>
-            <a href="/logout" class="btn btn-secondary">Logout</a>
+            <a href="/logout" class="btn btn-secondary" onclick="sessionStorage.clear()">Logout</a>
           
             <!-- <div>
               <label for=" labelFor">อุณหภูมิ</label>
@@ -93,7 +93,12 @@
 
   <script>
      
-    
+     if (
+      sessionStorage.getItem("token") &&
+      sessionStorage.getItem("pri") != 1
+    ) {
+    window.location.href = 'http://localhost:3000/834049beb19a82b97082598f16bd1057d94121ce942352bc9c3320f5d9ec8e16'
+    }
     var socket = io();
     $(() => {
       socket.emit("message", " ");//showdata
@@ -107,5 +112,6 @@
         $("#messages").text(mes);
       });
     });
+  
   </script>
 </body>

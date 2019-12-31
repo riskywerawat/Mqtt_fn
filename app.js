@@ -8,6 +8,7 @@ var usersRouter = require("./routes/users");
 var loginRouter = require("./routes/login");
 var logoutRouter = require("./routes/logout");
 var checkloginRouter = require("./routes/checklogin");
+var gettokenRouter = require("./routes/gettoken");
 var flash = require("connect-flash");
 var passport = require("passport");
 var app = express();
@@ -140,6 +141,7 @@ app.use("/index", indexRouter); // render
 app.use("/users", usersRouter); // render
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter); // render
+app.use("/gettoken", gettokenRouter);
 app.use("*", (req, res, next) => {
   res.render("error");
 });

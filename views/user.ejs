@@ -23,6 +23,14 @@
   <div class="container">
     <h1 class="mt-4">USER</h1>
     <p class="lead mb-3">Welcome</p>
-    <a href="/logout" class="btn btn-secondary">Logout</a>
+    <a href="/logout" class="btn btn-secondary" onclick="sessionStorage.clear()"
+      >Logout</a
+    >
   </div>
+  <script>
+    if (sessionStorage.getItem("token") && sessionStorage.getItem("pri") != 2) {
+      window.location.href =
+        "http://localhost:3000/834049beb19a82b97082598f16bd1057d94121ce942352bc9c3320f5d9ec8e16";
+    }
+  </script>
 </body>
